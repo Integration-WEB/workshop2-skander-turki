@@ -1,0 +1,73 @@
+$primary-color: #ff752f;
+$Text-color: black;
+$langages: 'HTML5', 'CSS3', 'JAVA', 'REACT';
+body{
+
+  color: $primary-color;
+}
+.button{
+  display: inline-block;
+  color: $primary-color;
+  text-align: center;
+  border: solid 2px $primary-color;
+}
+.button-alert{
+  a{
+    @extend .button;
+    border-radius: 4px;
+  }
+}
+
+@for $i from 1 through 3{
+  .m-#{$i}{
+    margin: 0($i*0.25rem);
+  }
+}
+
+.btn{
+  background:$primary-color;
+  border-radius: 5px;
+  @if lightness($primary-color)>50%{
+    color: #ffb60b;
+  }@else {
+    color: #ff1f17;
+  }
+}
+.text{
+  color: #ff1f17;
+  font-size: 20px;
+}
+textarea{
+  @extend .text;
+}
+h1{
+  @extend .text;
+}
+@mixin border($border) {
+  border: $border;
+
+}
+.btn{
+  @include border(3px solid yellow)
+}
+@function background($color){
+
+@if ($color)!= white{
+@return white;
+}
+}
+@function first($list){
+  @return nth($list,1);
+
+}
+.test1{
+  content: first($langages);
+}
+@function last($list){
+  @return nth($list,length($list));
+}
+.test2{
+  content: last($langages);
+}
+
+
